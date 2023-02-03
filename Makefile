@@ -23,32 +23,6 @@ clippy-receiver:
 test: unit-test unit-test-receiver integration-test
 
 .PHONY: unit-test
-unit-test:
-	RUST_BACKTRACE=1 cargo test
-
-.PHONY: unit-test-nocapture
-unit-test-nocapture:
-	RUST_BACKTRACE=1 cargo test -- --nocapture
-
-.PHONY: unit-test-receiver
-unit-test-receiver:
-	$(MAKE) -C tests/example-receiver unit-test
-
-.PHONY: integration-test
-integration-test: compile-optimized compile-optimized-receiver
-	if tests/integration.sh; then echo -n '\a'; else echo -n '\a'; sleep 0.125; echo -n '\a'; fi
-
-compile-optimized-receiver:
-	$(MAKE) -C tests/example-receiver compile-optimized
-
-.PHONY: list-code
-list-code:
-	$(SECRETCLI) query compute list-code
-
-.PHONY: compile _compile
-compile: _compile contract.wasm.gz
-_compile:
-	cargo build --target wasm32-unknown-unknown --locked
 	cp ./target/wasm32-unknown-unknown/debug/*.wasm ./contract.wasm
 
 .PHONY: compile-optimized _compile-optimized

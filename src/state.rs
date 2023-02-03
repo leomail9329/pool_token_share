@@ -23,32 +23,6 @@ pub const KEY_TX_COUNT: &[u8] = b"tx-count";
 pub const PREFIX_CONFIG: &[u8] = b"config";
 pub const PREFIX_BALANCES: &[u8] = b"balances";
 pub const PREFIX_ALLOWANCES: &[u8] = b"allowances";
-pub const PREFIX_VIEW_KEY: &[u8] = b"viewingkey";
-pub const PREFIX_RECEIVERS: &[u8] = b"receivers";
-
-// Config
-
-#[derive(Serialize, Debug, Deserialize, Clone, PartialEq, JsonSchema)]
-pub struct Constants {
-    pub name: String,
-    pub symbol: String,
-    pub decimals: u8,
-    pub prng_seed: Vec<u8>,
-    // privacy configuration
-    pub total_supply_is_public: bool,
-    // is deposit enabled
-    pub deposit_is_enabled: bool,
-    // is redeem enabled
-    pub redeem_is_enabled: bool,
-    // is mint enabled
-    pub mint_is_enabled: bool,
-    // is burn enabled
-    pub burn_is_enabled: bool,
-}
-
-pub struct ReadonlyConfig<'a, S: ReadonlyStorage> {
-    storage: ReadonlyPrefixedStorage<'a, S>,
-}
 
 impl<'a, S: ReadonlyStorage> ReadonlyConfig<'a, S> {
     pub fn from_storage(storage: &'a S) -> Self {
