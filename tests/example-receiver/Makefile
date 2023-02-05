@@ -1,4 +1,3 @@
-.PHONY: all
 all: clippy test
 
 .PHONY: check
