@@ -1,3 +1,4 @@
+#!/bin/bash
 
 set -eu
 set -o pipefail # If anything in a pipeline fails, the pipe's exit status is a failure
