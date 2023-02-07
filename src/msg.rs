@@ -8,17 +8,6 @@ use cosmwasm_std::{Binary, HumanAddr, Uint128};
 use crate::batch;
 use crate::transaction_history::{RichTx, Tx};
 use crate::viewing_key::ViewingKey;
-
-#[derive(Serialize, Deserialize, JsonSchema)]
-pub struct InitMsg {
-    pub name: String,
-    pub symbol: String,
-    pub decimals: u8,
-    pub prng_seed: Binary,
-    pub config: Option<InitConfig>,
-}
-
-impl InitMsg {
     pub fn config(&self) -> InitConfig {
         self.config.clone().unwrap_or_default()
     }

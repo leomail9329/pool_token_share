@@ -3,6 +3,12 @@
   "title": "HandleMsg",
   "anyOf": [
     {
+      "type": "object",
+      "required": [
+        "transfer"
+      ],
+      "properties": {
+        "transfer": {
           "type": "object",
           "required": [
             "amount",

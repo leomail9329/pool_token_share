@@ -3,16 +3,11 @@ use std::convert::TryFrom;
 
 use cosmwasm_std::{CanonicalAddr, HumanAddr, ReadonlyStorage, StdError, StdResult, Storage};
 use cosmwasm_storage::{PrefixedStorage, ReadonlyPrefixedStorage};
-use crate::viewing_key::ViewingKey;
-use serde::de::DeserializeOwned;
 
-pub static CONFIG_KEY: &[u8] = b"config";
-pub const PREFIX_TXS: &[u8] = b"transfers";
+use secret_toolkit::storage::{TypedStore, TypedStoreMut};
 
-pub const KEY_CONSTANTS: &[u8] = b"constants";
-pub const KEY_TOTAL_SUPPLY: &[u8] = b"total_supply";
-pub const KEY_MINTERS: &[u8] = b"minters";
-pub const KEY_TX_COUNT: &[u8] = b"tx-count";
+use schemars::JsonSchema;
+use serde::{Deserialize, Serialize};
 
 pub const PREFIX_CONFIG: &[u8] = b"config";
 pub const PREFIX_BALANCES: &[u8] = b"balances";
