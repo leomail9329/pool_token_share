@@ -13,22 +13,6 @@ are correct. This involves recompiling the claimed source with the claimed build
 and validating that the locally compiled code (hash) matches the code hash that was
 uploaded. This will verify that the source code is the correct preimage. Which allows
 one to audit the original (Rust) source code, rather than looking at wasm bytecode.
-
-We have a script to do this automatic verification steps that can
-easily be run by many individuals. Please check out
-[`cosmwasm-verify`](https://github.com/CosmWasm/cosmwasm-verify/blob/master/README.md)
-to see a simple shell script that does all these steps and easily allows you to verify
-any uploaded contract.
-
-## Reviewing
-
-Once you have done the quick programatic checks, it is good to give at least a quick
-look through the code. A glance at `examples/schema.rs` to make sure it is outputing
-all relevant structs from `contract.rs`, and also ensure `src/lib.rs` is just the
-default wrapper (nothing funny going on there). After this point, we can dive into
-the contract code itself. Check the flows for the handle methods, any invariants and
-permission checks that should be there, and a reasonable data storage format.
-
 You can dig into the contract as far as you want, but it is important to make sure there
 are no obvious backdoors at least.
 
