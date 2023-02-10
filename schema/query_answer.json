@@ -13,6 +13,22 @@
           "required": [
             "decimals",
             "name",
+            "symbol"
+          ],
+          "properties": {
+            "decimals": {
+              "type": "integer",
+              "format": "uint8",
+              "minimum": 0.0
+            },
+            "name": {
+              "type": "string"
+            },
+            "symbol": {
+              "type": "string"
+            },
+            "total_supply": {
+              "anyOf": [
                 {
                   "$ref": "#/definitions/Uint128"
                 },
