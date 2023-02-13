@@ -1,13 +1,8 @@
+.PHONY: all
 all: clippy test
 
 .PHONY: check
 check:
-	cargo check
-
-.PHONY: clippy
-clippy:
-	cargo clippy
-
 .PHONY: test
 test: unit-test
 
