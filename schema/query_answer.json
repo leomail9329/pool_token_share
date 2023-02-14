@@ -3,6 +3,12 @@
   "title": "QueryAnswer",
   "anyOf": [
     {
+      "type": "object",
+      "required": [
+        "token_info"
+      ],
+      "properties": {
+        "token_info": {
           "type": "object",
           "required": [
             "decimals",

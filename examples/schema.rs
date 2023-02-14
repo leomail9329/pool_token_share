@@ -3,11 +3,8 @@ use std::fs::create_dir_all;
 
 use cosmwasm_schema::{export_schema, remove_schemas, schema_for};
 
-    remove_schemas(&out_dir).unwrap();
+use cw_pool_shares_token::msg::{HandleAnswer, HandleMsg, InitMsg, QueryAnswer, QueryMsg};
 
-    export_schema(&schema_for!(InitMsg), &out_dir);
-    export_schema(&schema_for!(HandleMsg), &out_dir);
-    export_schema(&schema_for!(HandleAnswer), &out_dir);
-    export_schema(&schema_for!(QueryMsg), &out_dir);
-    export_schema(&schema_for!(QueryAnswer), &out_dir);
-}
+fn main() {
+    let mut out_dir = current_dir().unwrap();
+    out_dir.push("schema");

@@ -8,17 +8,6 @@
     "prng_seed",
     "symbol"
   ],
-  "properties": {
-    "config": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/InitConfig"
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
     "decimals": {
       "type": "integer",
       "format": "uint8",
