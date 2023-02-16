@@ -13,6 +13,22 @@ use crate::viewing_key::ViewingKey;
 use serde::de::DeserializeOwned;
 
 pub static CONFIG_KEY: &[u8] = b"config";
+pub const PREFIX_TXS: &[u8] = b"transfers";
+
+pub const KEY_CONSTANTS: &[u8] = b"constants";
+pub const KEY_TOTAL_SUPPLY: &[u8] = b"total_supply";
+pub const KEY_MINTERS: &[u8] = b"minters";
+pub const KEY_TX_COUNT: &[u8] = b"tx-count";
+
+pub const PREFIX_CONFIG: &[u8] = b"config";
+pub const PREFIX_BALANCES: &[u8] = b"balances";
+pub const PREFIX_ALLOWANCES: &[u8] = b"allowances";
+pub const PREFIX_VIEW_KEY: &[u8] = b"viewingkey";
+pub const PREFIX_RECEIVERS: &[u8] = b"receivers";
+
+// Config
+
+#[derive(Serialize, Debug, Deserialize, Clone, PartialEq, JsonSchema)]
 pub struct Constants {
     pub name: String,
     pub symbol: String,

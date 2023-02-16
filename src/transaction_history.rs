@@ -18,27 +18,6 @@ const PREFIX_TRANSFERS: &[u8] = b"transfers";
 // over 11 billion years for it to rollback. I'm pretty sure
 // we'll have bigger issues by then.
 #[derive(Serialize, Deserialize, JsonSchema, Clone, Debug)]
-pub struct Tx {
-    pub id: u64,
-    pub from: HumanAddr,
-    pub sender: HumanAddr,
-    pub receiver: HumanAddr,
-    pub coins: Coin,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub memo: Option<String>,
-    // The block time and block height are optional so that the JSON schema
-    // reflects that some SNIP-20 contracts may not include this info.
-    pub block_time: Option<u64>,
-    pub block_height: Option<u64>,
-}
-
-#[derive(Serialize, Deserialize, JsonSchema, Clone, Debug, PartialEq)]
-#[serde(rename_all = "snake_case")]
-pub enum TxAction {
-    Transfer {
-        from: HumanAddr,
-        sender: HumanAddr,
-        recipient: HumanAddr,
     },
     Mint {
         minter: HumanAddr,
