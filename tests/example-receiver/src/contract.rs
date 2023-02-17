@@ -18,6 +18,27 @@ pub fn init<S: Storage, A: Api, Q: Querier>(
         known_snip_20: vec![],
     };
 
+    config(&mut deps.storage).save(&state)?;
+
+    Ok(InitResponse::default())
+}
+
+pub fn handle<S: Storage, A: Api, Q: Querier>(
+    deps: &mut Extern<S, A, Q>,
+    env: Env,
+    msg: HandleMsg,
+) -> StdResult<HandleResponse> {
+    match msg {
+        HandleMsg::Increment {} => try_increment(deps, env),
+        HandleMsg::Reset { count } => try_reset(deps, env, count),
+        HandleMsg::Register { reg_addr, reg_hash } => try_register(deps, env, reg_addr, reg_hash),
+        HandleMsg::Receive {
+            sender,
+            from,
+            amount,
+            msg,
+            memo: _,
+        } => try_receive(deps, env, sender, from, amount, msg),
         HandleMsg::Redeem {
             addr,
             hash,
