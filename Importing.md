@@ -1,4 +1,3 @@
-# Importing
 
 In [Publishing](./Publishing.md), we discussed how you can publish your contract to the world.
 This looks at the flip-side, how can you use someone else's contract (which is the same

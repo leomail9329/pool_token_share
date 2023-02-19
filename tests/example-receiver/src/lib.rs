@@ -1,4 +1,3 @@
-pub mod contract;
 pub mod msg;
 pub mod state;
 
@@ -23,3 +22,18 @@ mod wasm {
         do_handle(
             &contract::handle::<ExternalStorage, ExternalApi, ExternalQuerier>,
             env_ptr,
+            msg_ptr,
+        )
+    }
+
+    #[no_mangle]
+    extern "C" fn query(msg_ptr: u32) -> u32 {
+        do_query(
+            &contract::query::<ExternalStorage, ExternalApi, ExternalQuerier>,
+            msg_ptr,
+        )
+    }
+
+    // Other C externs like cosmwasm_vm_version_1, allocate, deallocate are available
+    // automatically because we `use cosmwasm_std`.
+}
