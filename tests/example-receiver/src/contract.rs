@@ -1,3 +1,4 @@
+use cosmwasm_std::{
     from_binary, to_binary, Api, BankMsg, Binary, Coin, Context, CosmosMsg, Env, Extern,
     HandleResponse, HumanAddr, InitResponse, Querier, StdError, StdResult, Storage, Uint128,
     WasmMsg,

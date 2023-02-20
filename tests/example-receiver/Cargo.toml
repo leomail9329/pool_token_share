@@ -1,3 +1,4 @@
+[package]
 name = "receiver-contract"
 version = "0.1.0"
 authors = ["TomL94 <langer.tom7@gmail.com>"]
