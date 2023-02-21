@@ -3,6 +3,12 @@
 In [Publishing](./Publishing.md), we discussed how you can publish your contract to the world.
 This looks at the flip-side, how can you use someone else's contract (which is the same
 question as how they will use your contract). Let's go through the various stages.
+
+## Verifying Artifacts
+
+Before using remote code, you most certainly want to verify it is honest.
+
+The simplest audit of the repo is to simply check that the artifacts in the repo
 are correct. This involves recompiling the claimed source with the claimed builder
 and validating that the locally compiled code (hash) matches the code hash that was
 uploaded. This will verify that the source code is the correct preimage. Which allows
