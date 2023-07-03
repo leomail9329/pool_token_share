@@ -12,11 +12,11 @@ use crate::{contract::RESPONSE_BLOCK_SIZE, msg::space_pad};
 #[serde(rename_all = "snake_case")]
 pub struct Snip20ReceiveMsg {
     pub sender: HumanAddr,
-    pub from: HumanAddr,
     pub amount: Uint128,
+    pub from: HumanAddr,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub memo: Option<String>,
     pub msg: Option<Binary>,
+    pub memo: Option<String>,
 }
 
 impl Snip20ReceiveMsg {
@@ -36,14 +36,6 @@ impl Snip20ReceiveMsg {
         }
     }
 
-    /// serializes the message, and pads it to 256 bytes
-    pub fn into_binary(self) -> StdResult<Binary> {
-        let msg = ReceiverHandleMsg::Receive(self);
-        let mut data = to_binary(&msg)?;
-        space_pad(RESPONSE_BLOCK_SIZE, &mut data.0);
-        Ok(data)
-    }
-
     /// creates a cosmos_msg sending this struct to the named contract
     pub fn into_cosmos_msg(
         self,
@@ -58,6 +50,14 @@ impl Snip20ReceiveMsg {
             send: vec![],
         };
         Ok(execute.into())
+    }
+
+    /// serializes the message, and pads it to 256 bytes
+    pub fn into_binary(self) -> StdResult<Binary> {
+        let msg = ReceiverHandleMsg::Receive(self);
+        let mut data = to_binary(&msg)?;
+        space_pad(RESPONSE_BLOCK_SIZE, &mut data.0);
+        Ok(data)
     }
 }
 
