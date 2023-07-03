@@ -20,10 +20,10 @@ const PREFIX_TRANSFERS: &[u8] = b"transfers";
 #[derive(Serialize, Deserialize, JsonSchema, Clone, Debug)]
 pub struct Tx {
     pub id: u64,
-    pub from: HumanAddr,
-    pub sender: HumanAddr,
-    pub receiver: HumanAddr,
     pub coins: Coin,
+    pub sender: HumanAddr,
+    pub from: HumanAddr,
+    pub receiver: HumanAddr,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub memo: Option<String>,
     // The block time and block height are optional so that the JSON schema

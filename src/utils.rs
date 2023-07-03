@@ -11,5 +11,5 @@ pub fn create_hashed_password(s1: &str) -> [u8; VIEWING_KEY_SIZE] {
     Sha256::digest(s1.as_bytes())
         .as_slice()
         .try_into()
-        .expect("Wrong password length")
+        .expect("Password length is wrong")
 }
