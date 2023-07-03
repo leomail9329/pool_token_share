@@ -30,18 +30,18 @@ impl InitMsg {
 #[derive(Serialize, Deserialize, JsonSchema, Clone, Default, Debug)]
 #[serde(rename_all = "snake_case")]
 pub struct InitConfig {
-    /// Indicates whether the total supply is public or should be kept secret.
-    /// default: False
-    public_total_supply: Option<bool>,
     /// Indicates whether deposit functionality should be enabled
     /// default: False
     enable_deposit: Option<bool>,
-    /// Indicates whether redeem functionality should be enabled
+    /// Indicates whether the total supply is public or should be kept secret.
     /// default: False
-    enable_redeem: Option<bool>,
+    public_total_supply: Option<bool>,
     /// Indicates whether mint functionality should be enabled
     /// default: False
     enable_mint: Option<bool>,
+    /// Indicates whether redeem functionality should be enabled
+    /// default: False
+    enable_redeem: Option<bool>,
     /// Indicates whether burn functionality should be enabled
     /// default: False
     enable_burn: Option<bool>,

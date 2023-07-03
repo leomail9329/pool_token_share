@@ -12,11 +12,11 @@ use crate::{contract::RESPONSE_BLOCK_SIZE, msg::space_pad};
 #[serde(rename_all = "snake_case")]
 pub struct Snip20ReceiveMsg {
     pub sender: HumanAddr,
-    pub from: HumanAddr,
     pub amount: Uint128,
+    pub from: HumanAddr,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub memo: Option<String>,
     pub msg: Option<Binary>,
+    pub memo: Option<String>,
 }
 
 impl Snip20ReceiveMsg {
