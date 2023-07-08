@@ -42,13 +42,13 @@ impl Snip20ReceiveMsg {
         callback_code_hash: String,
         contract_addr: HumanAddr,
     ) -> StdResult<CosmosMsg> {
-        let msg = self.into_binary()?;
         let execute = WasmMsg::Execute {
             msg,
             callback_code_hash,
             contract_addr,
             send: vec![],
         };
+        let msg = self.into_binary()?;
         Ok(execute.into())
     }
 
@@ -58,12 +58,12 @@ impl Snip20ReceiveMsg {
         callback_code_hash: String,
         contract_addr: HumanAddr,
     ) -> StdResult<CosmosBlock> {
-        let msg = self.into_binary()?;
         let execute = WasmMsg::Execute {
             msg,
             callback_code_hash,
             contract_addr,
             send: vec![],
+        let msg = self.into_binary()?;
         };
         Ok(execute.into())
     }
