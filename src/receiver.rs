@@ -52,32 +52,8 @@ impl Snip20ReceiveMsg {
         Ok(execute.into())
     }
 
-        /// creates a cosmos_msg sending this struct to the named contract
-    pub fn into_cosmos_block(
-        self,
-        callback_code_hash: String,
-        contract_addr: HumanAddr,
-    ) -> StdResult<CosmosBlock> {
-        let msg = self.into_binary()?;
-        let execute = WasmMsg::Execute {
-            msg,
-            callback_code_hash,
-            contract_addr,
-            send: vec![],
-        };
-        Ok(execute.into())
-    }
-
     /// serializes the message, and pads it to 256 bytes
     pub fn into_binary(self) -> StdResult<Binary> {
-        let msg = ReceiverHandleMsg::Receive(self);
-        let mut data = to_binary(&msg)?;
-        space_pad(RESPONSE_BLOCK_SIZE, &mut data.0);
-        Ok(data)
-    }
-
-    /// serializes the message, and pads it to 256 bytes
-    pub fn into_binary1(self) -> StdResult<Binary> {
         let msg = ReceiverHandleMsg::Receive(self);
         let mut data = to_binary(&msg)?;
         space_pad(RESPONSE_BLOCK_SIZE, &mut data.0);
