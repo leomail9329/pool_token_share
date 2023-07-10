@@ -3,16 +3,6 @@ use rand_core::{RngCore, SeedableRng};
 
 use sha2::{Digest, Sha256};
 
-pub fn sha_256(data: &[u8]) -> [u8; 32] {
-    let mut hasher = Sha256::new();
-    hasher.update(data);
-    let hash = hasher.finalize();
-
-    let mut result = [0u8; 32];
-    result.copy_from_slice(hash.as_slice());
-    result
-}
-
 pub struct Prng {
     rng: ChaChaRng,
 }
@@ -42,6 +32,16 @@ impl Prng {
     }
 }
 
+pub fn sha_256(data: &[u8]) -> [u8; 32] {
+    let mut hasher = Sha256::new();
+    hasher.update(data);
+    let hash = hasher.finalize();
+
+    let mut result = [0u8; 32];
+    result.copy_from_slice(hash.as_slice());
+    result
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -50,7 +50,7 @@ mod tests {
     /// different random bytes every time it is called.
     #[test]
     fn test_rng() {
-        let mut rng = Prng::new(b"foo", b"bar!");
+        let mut rng = Prng::new(b"prng", b"test");
         let r4: [u8; 32] = [
             155, 11, 21, 97, 252, 65, 160, 190, 100, 126, 85, 251, 47, 73, 160, 49, 216, 182, 93,
             30, 185, 67, 166, 22, 34, 10, 213, 112, 21, 136, 49, 214,
